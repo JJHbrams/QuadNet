@@ -1,0 +1,31 @@
+digraph G {
+"world" -> "hound_des/trunk"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.210 ( 0.473 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/trunk" -> "hound_des/FL_shoulder"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.210 ( 0.473 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/trunk" -> "hound_des/FR_shoulder"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.210 ( 0.473 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/trunk" -> "hound_des/RL_shoulder"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.210 ( 0.473 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/trunk" -> "hound_des/RR_shoulder"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.210 ( 0.473 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/FL_calf" -> "hound_des/FL_foot"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.710 ( -0.027 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/FR_calf" -> "hound_des/FR_foot"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.710 ( -0.027 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/RL_calf" -> "hound_des/RL_foot"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.710 ( -0.027 sec old)\nBuffer length: 1.926 sec\n"];
+"hound_des/RR_calf" -> "hound_des/RR_foot"[label="Broadcaster: /urdf_visualizer_hound\nAverage rate: 1.557 Hz\nMost recent transform: 1607069482.710 ( -0.027 sec old)\nBuffer length: 1.926 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1607069482.683"[ shape=plaintext ] ;
+ }->"world";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1607069482.683"[ shape=plaintext ] ;
+ }->"hound_des/FL_calf";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1607069482.683"[ shape=plaintext ] ;
+ }->"hound_des/FR_calf";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1607069482.683"[ shape=plaintext ] ;
+ }->"hound_des/RL_calf";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1607069482.683"[ shape=plaintext ] ;
+ }->"hound_des/RR_calf";
+}

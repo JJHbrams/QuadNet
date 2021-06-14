@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>deepQMP</name>
+  <version>0.0.0</version>
+  <description>The DeepQMP package</description>
+  <maintainer email="mrjohd@todo.todo">mrjohd</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>towr_ros</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>xpp_msgs</depend>
+
+  <exec_depend>ros_cpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+
+</package>
