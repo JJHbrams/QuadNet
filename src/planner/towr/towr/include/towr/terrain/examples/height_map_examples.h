@@ -122,9 +122,9 @@ public:
 
 private:
   const double slope_start_ = 1.0;
-  const double up_length_   = 1.0;
+  const double up_length_   = 2.7;
   const double down_length_ = 1.0;
-  const double height_center = 0.7;
+  const double height_center = 1.2;
 
   const double flat_height = 0.4;
 
@@ -173,13 +173,17 @@ private:
  * @brief Sample terrain with Random step terrain.
  */
 double RAND_VAL(double MIN, double MAX);
+
+/******************************************/
+/********** Random Step Terrain ***********/
+/******************************************/
 class RandomStep : public HeightMap {
 public:
   RandomStep();
   double GetHeight(double x, double y)  const override;//  const override { return height_; };
 
 private:
-  const double MAX_H = 0.4;
+  const double MAX_H = 0.5;
   double height_; // [m]
   double width_;
   double init_;
@@ -191,6 +195,10 @@ private:
 /**
  * @brief Sample terrain with Random gap terrain.
  */
+
+ /*****************************************/
+ /********** Random gap Terrain ***********/
+ /*****************************************/
 class RandomGap : public HeightMap {
 public:
   RandomGap();
@@ -210,6 +218,25 @@ private:
   double dx = width_/2.0;
 };
 
+/*******************************************/
+/********** Random Slope Terrain ***********/
+/*******************************************/
+class RandomSlope : public HeightMap {
+public:
+  RandomSlope();
+  double GetHeight(double x, double y) const override;
+  double GetHeightDerivWrtX(double x, double y) const override;
+
+private:
+  const double slope_start_ = 1.0;
+  const double width_       = 2.5;
+  double slope_;
+  double height_;
+};
+
+/**************************************/
+/********** Nonflat Terrain ***********/
+/**************************************/
 class NonFlat : public HeightMap {
 public:
   NonFlat();
@@ -223,6 +250,40 @@ private:
   double init2_;
 
   double dx = width_/2.0;
+};
+
+/*******************************************/
+/********** TEST step Terrain ***********/
+/*******************************************/
+class TestStep : public HeightMap {
+public:
+  TestStep();
+  double GetHeight(double x, double y)  const override;//  const override { return height_; };
+
+private:
+  const double MAX_H = 0.5;
+  double height_; // [m]
+  double width_ = 2.0;
+
+  double dx = width_/2.0;
+};
+
+/*******************************************/
+/********** TEST slope Terrain ***********/
+/*******************************************/
+class TestSlope : public HeightMap {
+public:
+  TestSlope();
+  double GetHeight(double x, double y)  const override;//  const override { return height_; };
+  double GetHeightDerivWrtX(double x, double y) const override;
+
+private:
+  const double slope_start_ = 1.0;
+  double slope_end_;
+  const double length_ = 3.0;
+  double slope_;
+  double width_;
+  double height_;
 };
 
 /** @}*/

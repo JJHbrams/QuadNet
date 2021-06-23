@@ -85,7 +85,10 @@ public:
                    ChimneyLRID,
                    RandomStepID,
                    RandomGapID,
+                   RandomSlopeID,
                    NonflatID,
+                   TestStepID,
+                   TestSlopeID,
                    TERRAIN_COUNT };
 
   static HeightMap::Ptr MakeTerrain(TerrainID type);
@@ -186,7 +189,10 @@ const static std::map<HeightMap::TerrainID, std::string> terrain_names =
   {HeightMap::ChimneyLRID,   "ChimenyLR"  },
   {HeightMap::RandomStepID,  "RandomStep" },
   {HeightMap::RandomGapID,   "RandomGap"  },
-  {HeightMap::NonflatID,     "NonFlat"  }
+  {HeightMap::RandomSlopeID, "RandomSlope"},
+  {HeightMap::NonflatID,     "NonFlat"  },
+  {HeightMap::TestStepID,    "TestStep"},
+  {HeightMap::TestSlopeID,   "TestSlope"}
 };
 
 } /* namespace towr */

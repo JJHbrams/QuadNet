@@ -51,9 +51,9 @@ TowrRosInterface::TowrRosInterface ()
 
   /* When using QuadnNet as a full-path planner, deactivate both */
 
-  // /* Activate When using Original TOWR app */
-  // user_command_sub_ = n.subscribe(towr_msgs::user_command, 1,
-  //                                 &TowrRosInterface::UserCommandCallback, this);
+  /* Activate When using Original TOWR app */
+  user_command_sub_ = n.subscribe(towr_msgs::user_command, 1,
+                                  &TowrRosInterface::UserCommandCallback, this);
 
   // /* Activate When using DeepQMP as an initial guess */
   // user_command_sub_ = n.subscribe("/DeepQMPcommand", 1,

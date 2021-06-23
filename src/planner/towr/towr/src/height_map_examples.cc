@@ -140,8 +140,8 @@ Slope::GetHeight (double x, double y) const
   //   z = 0.0;
 
   // flat height
-  if (x >= x_flat_start_)
-    z = flat_height;
+  // if (x >= x_flat_start_)
+  //   z = flat_height;
 
   return z;
 }
@@ -235,6 +235,9 @@ double RAND_VAL(double MIN, double MAX){
 
   return output;
 }
+/******************************************/
+/********** Random Step Terrain ***********/
+/******************************************/
 // Random step Terrain
 RandomStep::RandomStep()
 {
@@ -246,7 +249,7 @@ RandomStep::RandomStep()
   init2_  = RAND_VAL(0.5, 2.);
 
   // Test randstep
-  height_ = 0.2;
+  height_ = 0.5;
   width_ = 2.0;
   init_ = 0.5;
   init2_ = 1.5;
@@ -285,6 +288,10 @@ RandomStep::GetHeight (double x, double y) const
 
   return h;
 }
+
+/*****************************************/
+/********** Random gap Terrain ***********/
+/*****************************************/
 
 // Random gap Terrain
 RandomGap::RandomGap()
@@ -360,6 +367,42 @@ RandomGap::GetHeightDerivWrtXX (double x, double y) const
   return dzdxx;
 }
 
+/*******************************************/
+/********** Random Slope Terrain ***********/
+/*******************************************/
+RandomSlope::RandomSlope()
+{
+  slope_ = RAND_VAL(0.1, 0.4);
+
+  // Test randslope
+  // slope_ = 0.2;
+
+  height_ = width_*slope_;
+}
+
+double
+RandomSlope::GetHeight (double x, double y) const
+{
+  double h = 0.0;
+  if (x >= slope_start_)
+    h = slope_*(x-slope_start_);
+
+  return h;
+}
+
+double
+RandomSlope::GetHeightDerivWrtX (double x, double y) const
+{
+  double dzdx = 0.0;
+  if (x >= slope_start_)
+    dzdx = slope_;
+
+  return dzdx;
+}
+
+/**************************************/
+/********** Nonflat Terrain ***********/
+/**************************************/
 NonFlat::NonFlat()
 {
   height_ = RAND_VAL(0., MAX_H);
@@ -401,5 +444,76 @@ NonFlat::GetHeight (double x, double y) const
 
   return h;
 }
+
+
+/*******************************************/
+/********** Test step Terrain ***********/
+/*******************************************/
+TestStep::TestStep()
+{
+  height_ = RAND_VAL(0.2, 0.5);
+
+}
+
+double
+TestStep::GetHeight (double x, double y) const
+{
+  double h = 0.0;
+
+  double hh=height_;
+  double ww=width_;
+
+  double terrain_start_ = 3.0;
+  double terrain_end_x = terrain_start_ + ww;
+
+  if (terrain_start_ <= x && x <= terrain_end_x)
+    h = hh;
+
+  return h;
+}
+
+
+/*******************************************/
+/********** Test Slope Terrain ***********/
+/*******************************************/
+TestSlope::TestSlope()
+{
+  slope_ = RAND_VAL(0.3, 0.7);
+
+  // Test randslope
+  // slope_ = 0.2;
+  width_  = length_*std::cos(std::atan(slope_));
+  height_ = width_*slope_;
+
+  slope_end_ = slope_start_ + width_;
+}
+
+double
+TestSlope::GetHeight (double x, double y) const
+{
+  double h = 0.0;
+
+  if (x >= slope_start_)
+    h = slope_*(x-slope_start_);
+
+  if(x >= slope_end_)
+    h = height_;
+
+  return h;
+}
+
+double
+TestSlope::GetHeightDerivWrtX (double x, double y) const
+{
+  double dzdx = 0.0;
+  if (x >= slope_start_)
+    dzdx = slope_;
+
+  if (x >= slope_end_)
+    dzdx = 0;
+
+  return dzdx;
+}
+
 
 } /* namespace towr */

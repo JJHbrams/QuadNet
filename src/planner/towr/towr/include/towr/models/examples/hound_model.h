@@ -46,6 +46,7 @@ public:
     const double x_nominal_b = 0.349;
     const double y_nominal_b = 0.2135;
     // const double z_nominal_b = -0.4;
+
     // const double x_nominal_b = 0.3;
     // const double y_nominal_b = 0.12;
     const double z_nominal_b = -0.5;

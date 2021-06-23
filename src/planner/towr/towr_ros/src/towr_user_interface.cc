@@ -104,13 +104,14 @@ TowrUserInterface::TowrUserInterface ()
   // robot_      = RobotModel::Monoped;
   robot_      = RobotModel::Hound;
   // robot_      = RobotModel::Laikago;
-  // terrain_    = HeightMap::FlatID;
+  terrain_    = HeightMap::FlatID;
   // terrain_    = HeightMap::BlockID;
   // terrain_    = HeightMap::SlopeID;
   // terrain_    = HeightMap::StairsID;
   // terrain_    = HeightMap::RandomStepID;
   // terrain_    = HeightMap::RandomGapID;
-  terrain_    = HeightMap::NonflatID;
+  // terrain_    = HeightMap::RandomSlopeID;
+  // terrain_    = HeightMap::NonflatID;
   terrain_height = HeightMap::MakeTerrain(static_cast<HeightMap::TerrainID>(terrain_));
   // gait_combo_ = GaitGenerator::C0;
   gait_combo_ = GaitGenerator::C1;
@@ -119,8 +120,9 @@ TowrUserInterface::TowrUserInterface ()
   total_duration_ = 2.0;
   visualize_trajectory_ = false;
   plot_trajectory_ = false;
-  replay_speed_ = 0.3; // realtime
-  // replay_speed_ = 100.;
+  // replay_speed_ = 0.3; // realtime
+  // replay_speed_ = 100.; // Superfast
+  replay_speed_ = 2.;
   optimize_ = false;
   publish_optimized_trajectory_ = false;
   optimize_phase_durations_ = false;
@@ -311,6 +313,9 @@ TowrUserInterface::CallbackKey (int c)
 
     case 'o':
       optimize_ = true;
+      // if(terrain_ == HeightMap::RandomSlopeID){
+      //   goal_geom_.ang.p_.y() = std::atan2(goal_geom_.lin.p_.y(), goal_geom_.lin.p_.x());
+      // }
       wmove(stdscr, Y_STATUS, 0);
       printw("Optimizing motion\n\n");
       break;

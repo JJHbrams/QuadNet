@@ -47,7 +47,10 @@ HeightMap::MakeTerrain (TerrainID type)
     case ChimneyLRID: return std::make_shared<ChimneyLR>(); break;
     case RandomStepID: return std::make_shared<RandomStep>(); break;
     case RandomGapID: return std::make_shared<RandomGap>(); break;
+    case RandomSlopeID: return std::make_shared<RandomSlope>(); break;
     case NonflatID: return std::make_shared<NonFlat>(); break;
+    case TestStepID: return std::make_shared<TestStep>(); break;
+    case TestSlopeID: return std::make_shared<TestSlope>(); break;
     default: assert(false); break;
   }
 }
